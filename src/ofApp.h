@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxiOS.h"
 #include "ofxiOSExtras.h"
+#include "compass.h"
 
 class ofApp : public ofxiOSApp{
 	
@@ -22,6 +23,23 @@ class ofApp : public ofxiOSApp{
         void gotFocus();
         void gotMemoryWarning();
         void deviceOrientationChanged(int newOrientation);
+    
+    Compass compass;
+    
+    
+    //Location Management
+    ofxiPhoneCoreLocation * coreLocation;
+	bool bHasCompass;
+	bool bHasGPS;
+    float heading;
+
+    //Points of Interest
+    vector<ofPoint> pointsOfInterest;
+    int actualPointofInterest;
+
+    
+    
+private:
 
 };
 
