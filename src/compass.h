@@ -22,14 +22,21 @@ class Compass{
     void setPointOfInterest(ofPoint p);
     ofPoint pointOfInterest;
 
+    ofTrueTypeFont franklinBook14;
 
-
+    ofTrueTypeFont TTF;
     
+    
+    
+    bool bIsEnabled;
+    void setIsEnabled(bool enable);
+    bool getIsEnabled();
     
 private:
     
     ofImage compassImg;
     float heading;
+    
     
     float computeDistance(float lat1,float lon1, float lat2, float lon2);
     float distance;

@@ -30,6 +30,11 @@
 		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* ofApp.mm */; };
+		FC4208F6191E72050078001C /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4208EF191E72050078001C /* tinyxml.cpp */; };
+		FC4208F7191E72050078001C /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4208F1191E72050078001C /* tinyxmlerror.cpp */; };
+		FC4208F8191E72050078001C /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4208F2191E72050078001C /* tinyxmlparser.cpp */; };
+		FC4208F9191E72050078001C /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC4208F4191E72050078001C /* ofxXmlSettings.cpp */; };
+		FC847BF719190C680070F2DF /* quest.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC847BF619190C680070F2DF /* quest.mm */; };
 		FC9BB89D1918D77C006BAF00 /* compass.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC9BB89C1918D77C006BAF00 /* compass.mm */; };
 		FC9BB8A21918E425006BAF00 /* windrose.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9BB8A11918E425006BAF00 /* windrose.png */; };
 /* End PBXBuildFile section */
@@ -79,6 +84,14 @@
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
 		E4D8936C11527B74007E1F53 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
 		E4D8936D11527B74007E1F53 /* ofApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofApp.mm; path = src/ofApp.mm; sourceTree = SOURCE_ROOT; };
+		FC4208EF191E72050078001C /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		FC4208F0191E72050078001C /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		FC4208F1191E72050078001C /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		FC4208F2191E72050078001C /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		FC4208F4191E72050078001C /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		FC4208F5191E72050078001C /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		FC847BF519190C5A0070F2DF /* quest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = quest.h; sourceTree = "<group>"; };
+		FC847BF619190C680070F2DF /* quest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = quest.mm; sourceTree = "<group>"; };
 		FC9BB89B1918D77C006BAF00 /* compass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compass.h; sourceTree = "<group>"; };
 		FC9BB89C1918D77C006BAF00 /* compass.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = compass.mm; sourceTree = "<group>"; };
 		FC9BB8A11918E425006BAF00 /* windrose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = windrose.png; path = bin/data/windrose.png; sourceTree = "<group>"; };
@@ -166,6 +179,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				FC4208ED191E72040078001C /* ofxXmlSettings */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -206,9 +220,41 @@
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
 				E4D8936C11527B74007E1F53 /* ofApp.h */,
+				FC847BF519190C5A0070F2DF /* quest.h */,
+				FC847BF619190C680070F2DF /* quest.mm */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
+		};
+		FC4208ED191E72040078001C /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				FC4208EE191E72050078001C /* libs */,
+				FC4208F3191E72050078001C /* src */,
+			);
+			name = ofxXmlSettings;
+			path = ../../../addons/ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		FC4208EE191E72050078001C /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				FC4208EF191E72050078001C /* tinyxml.cpp */,
+				FC4208F0191E72050078001C /* tinyxml.h */,
+				FC4208F1191E72050078001C /* tinyxmlerror.cpp */,
+				FC4208F2191E72050078001C /* tinyxmlparser.cpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		FC4208F3191E72050078001C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FC4208F4191E72050078001C /* ofxXmlSettings.cpp */,
+				FC4208F5191E72050078001C /* ofxXmlSettings.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -319,6 +365,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC4208F7191E72050078001C /* tinyxmlerror.cpp in Sources */,
+				FC847BF719190C680070F2DF /* quest.mm in Sources */,
+				FC4208F9191E72050078001C /* ofxXmlSettings.cpp in Sources */,
+				FC4208F6191E72050078001C /* tinyxml.cpp in Sources */,
+				FC4208F8191E72050078001C /* tinyxmlparser.cpp in Sources */,
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
 				E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */,
 				FC9BB89D1918D77C006BAF00 /* compass.mm in Sources */,
@@ -345,8 +396,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = PlanB;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
@@ -359,8 +412,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = PlanB;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;

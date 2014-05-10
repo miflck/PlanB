@@ -1,0 +1,6 @@
+<settings>
+    <blinkRate>10</blinkRate>
+    <gravity>9.8</gravity>
+    <sceneName>field</sceneName>
+    <actualPointOfInterest>2</actualPointOfInterest>
+</settings>

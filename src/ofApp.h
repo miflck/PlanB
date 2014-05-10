@@ -4,6 +4,8 @@
 #include "ofxiOS.h"
 #include "ofxiOSExtras.h"
 #include "compass.h"
+#include "quest.h"
+#include "ofxXmlSettings.h"
 
 class ofApp : public ofxiOSApp{
 	
@@ -19,6 +21,8 @@ class ofApp : public ofxiOSApp{
         void touchDoubleTap(ofTouchEventArgs & touch);
         void touchCancelled(ofTouchEventArgs & touch);
 
+    void gotMessage(ofMessage &msg);
+    
         void lostFocus();
         void gotFocus();
         void gotMemoryWarning();
@@ -36,6 +40,22 @@ class ofApp : public ofxiOSApp{
     //Points of Interest
     vector<ofPoint> pointsOfInterest;
     int actualPointofInterest;
+    
+    
+    
+    //Quests
+    vector<Quest> quests;
+    int numberOfQuests;
+    bool everythingIsSolved;
+    bool everythingIsSolvedBefore;
+
+    
+    
+    bool isKeybord();
+    float keyboardShift;
+    
+    
+    ofxiOSVideoPlayer video;
 
     
     
