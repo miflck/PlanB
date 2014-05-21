@@ -40,6 +40,9 @@ public:
     ofColor failColor;
     
     
+    ofTrueTypeFont TTF;
+
+    
     float myWidth;
     float myHeight;
     
@@ -61,6 +64,10 @@ public:
     void markAsSolved();
     void showFail();
     
+    void setSecretArray(vector<string> _secrets);
+
+       vector<string> secrets;
+    
     
     bool bIsSolved;
     bool getIsSolved();
@@ -72,6 +79,10 @@ public:
     string textBefore;
     bool keyboardbefore;
     bool keyboardnow;
+    
+    
+    
+    
     
     
     

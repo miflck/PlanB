@@ -23,7 +23,10 @@ void Quest::setup(){
     
     solvedColor =ofColor(0,255,0,100);
     failColor=ofColor(255,0,0);
-    myColor=ofColor(0,0,255,50);
+    myColor=ofColor(100,50);
+    
+    TTF.loadFont("Brown-Regular.otf", 15, true, true);
+
     
     
     //intervall=ofRandom(0.35,0.5);
@@ -95,7 +98,7 @@ void Quest::draw(){
     
     ofPushMatrix();
  
-    solutionfield->setPosition(screenPos.x+myWidth/2,screenPos.y+myHeight/2);
+    solutionfield->setPosition(screenPos.x+myWidth/2,screenPos.y+myHeight/2+10);
     ofTranslate(screenPos.x, screenPos.y-yOffset);
     ofFill();
     ofSetColor(myColor);
@@ -107,6 +110,10 @@ void Quest::draw(){
     ofSetLineWidth(1);
     ofRect(0,0,myWidth,myHeight);
     
+    if(bIsSolved){
+    string drawstring=secrets[0];
+    TTF.drawString(drawstring, ofGetWidth()/2, myHeight/2);
+    }
     
     if(!bIsSolved){
         ofSetColor(255,0,0);
@@ -132,7 +139,7 @@ bool Quest::getIsSolved(){
 
 //--------------------------------------------------------------
 void Quest::touchDown(ofTouchEventArgs & touch){
-    cout<<touch.id<<endl;
+
 }
 
 //--------------------------------------------------------------
@@ -160,16 +167,29 @@ void Quest::touchCancelled(ofTouchEventArgs & touch){
 
 void Quest::setSecret(string _secret){
     secret=_secret;
-    
+     secrets.push_back(_secret);
 }
+
+
+//--------------------------------------------------------------
+void Quest::setSecretArray(vector<string> _secrets){
+    secrets=_secrets;
+   // secret=_secret;
+}
+
 
 
 bool Quest::checkSecret(string _try){
     bool solved=false;
-    if(_try==secret){
+   
+    
+    for (int i=0;i<secrets.size();i++){
+    if(_try==secrets[i]){
         solved=true;
+        }
     }
     return solved;
+    
 }
 
 
@@ -204,7 +224,7 @@ void Quest::setScreenPosition(ofPoint _sceenPosition){
     screenPos.set(_sceenPosition);
     init_screenPos.set(screenPos);
     target_screenPos.set(screenPos);
-    solutionfield->setPosition(screenPos.x+myWidth/2,screenPos.y+myHeight/2);
+    solutionfield->setPosition(screenPos.x+myWidth/2,screenPos.y+myHeight/2+10);
 }
 
 ofPoint Quest::getActualScreenPosition(){

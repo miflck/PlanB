@@ -4,9 +4,9 @@
 void Compass::setup(){
     pointOfInterest.set(0,0);
     
-    compassImg.loadImage("windrose.png");
-    compassImg.resize(200, 200);
-    compassImg.setAnchorPoint(compassImg.width/2, compassImg.height/2);
+    compassImg.loadImage("zeiger.png");
+  //  compassImg.resize(200, 200);
+    compassImg.setAnchorPoint(compassImg.width/2, 159);
     compassImg.update();
     
     franklinBook14.loadFont("GStyle.ttf", 14);
@@ -34,7 +34,7 @@ void Compass::update(){
 //--------------------------------------------------------------
 void Compass::draw(){
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/6, 0);
+    ofTranslate(ofGetWidth()/2, 210, 0);
    
     if(bIsEnabled){
     ofRotateZ(direction+heading);
@@ -44,27 +44,33 @@ void Compass::draw(){
     if(!bIsEnabled){
         
         ofSetColor(0, 0, 0,100);
-        ofRect(-compassImg.width/2, -compassImg.height/2, compassImg.width, compassImg.height);
+        //ofEllipse(0, 0, 315, 315);
+        ofEllipse(0, 0, 320, 320);
+
+       // ofRect(-compassImg.width/2, -compassImg.height/2, compassImg.width, compassImg.height);
 
     ofSetColor(255, 0, 0);
     string drawstring="Nicht Freigeschaltet";
-    TTF.drawString(drawstring, -compassImg.width/2, 0);
+        
+    TTF.drawString(drawstring, -80, 0);
     }
   
 	ofPopMatrix();
     
+    
+    if(bIsEnabled){
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, 0);
+    ofTranslate(384, 414, 0);
     ofSetColor(255, 0, 0);
     //ofRect(0,0,20,100);
-    ofRect(0, 0, 20, ofMap(distance, 0, 1, 0, 500,true));
+    ofRect(-100, 0, ofMap(distance, 0, 1, 0, 500,true),20 );
     ofSetColor(245, 58, 135);
     string drawstring="Distanz ";
     drawstring+=ofToString(distance*1000);
     drawstring+=" Meter";
     TTF.drawString(drawstring, 0, 0);
     ofPopMatrix();
-
+    }
 
 }
 

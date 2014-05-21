@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D27A2F45-3E64-42A3-BBCA-D9F8FDDB9CEA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Decoder</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B0B5C516-A1FE-4448-A8E4-4D500D28B894</key>
+		<string>https://github.com/miflck/PlanB.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Decoder.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B0B5C516-A1FE-4448-A8E4-4D500D28B894</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/miflck/PlanB.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B0B5C516-A1FE-4448-A8E4-4D500D28B894</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B0B5C516-A1FE-4448-A8E4-4D500D28B894</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PlanB</string>
+		</dict>
+	</array>
+</dict>
+</plist>

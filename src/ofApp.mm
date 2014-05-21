@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    
+    ofSetCircleResolution(200);
     
     bool reset_all=false;
     
@@ -30,21 +30,17 @@ void ofApp::setup(){
     compass=*new Compass();
     compass.setup();
     
-    numberOfQuests=5;
-    for(int i=0; i<numberOfQuests; i++)
-     {
-         Quest q =*new Quest();
-         q.setup();
-         q.setId(i);
-         q.setWidth(ofGetWidth());
-         float h=100;
-         q.setHeight(h);
-         q.setScreenPosition(ofPoint(0,(h*i)+500));
-         q.setSecret("S");
-         quests.push_back(q);
-     }
+       //quests[1].setSecretArray(s1);
     
     
+    backgroundImage.loadImage("decoder.png");
+    //backgroundImage.resize(200, 200);
+
+    
+    
+    setupQuests();
+   
+
     
     ofxXmlSettings settings;
     settings.loadFile(ofxiPhoneGetDocumentsDirectory()+"settings.xml");
@@ -68,20 +64,22 @@ void ofApp::setup(){
     }
    */
     
-    ofPoint p =*new ofPoint(47.365880,8.520409);
+    ofPoint p =*new ofPoint(0,0);
     pointsOfInterest.push_back(p);
     
-    p.set(47.365679,8.521542);
+    p.set(0,0);
     pointsOfInterest.push_back(p);
     
-    p.set(47.36566,8.5211);
+    p.set(47.564544,7.595019);
     pointsOfInterest.push_back(p);
     
-    p.set(47.1,9.521542);
+    p.set(47.562447,7.593579);
     pointsOfInterest.push_back(p);
     
-    p.set(47.365679,8.521542);
+    p.set(47.566123,7.59059);
     pointsOfInterest.push_back(p);
+    
+    
     
     actualPointofInterest=pOi;
     compass.setPointOfInterest(pointsOfInterest[actualPointofInterest]);
@@ -98,8 +96,17 @@ void ofApp::setup(){
     //quests[0].setIsSolved(true);
     //quests[1].setIsSolved(true);
 
+    //intervall=ofRandom(0.35,0.5);
     
+    //RESET
+    intervallMin=3;
+    intervallMax=4;
+
+    timer=ofGetElapsedTimef();
 }
+
+
+
 
 //--------------------------------------------------------------
 void ofApp::update(){
@@ -146,13 +153,16 @@ void ofApp::update(){
 
     }
     everythingIsSolvedBefore=everythingIsSolved;
+    
 
     
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    compass.draw();
+    ofSetColor(255);
+    backgroundImage.draw(0,0);
+   compass.draw();
     
 
     if(!everythingIsSolved){
@@ -178,7 +188,19 @@ void ofApp::draw(){
     
     }
     
-    ofSetColor(54);
+    
+    if(bIsReset){
+    
+        ofPushMatrix();
+        ofTranslate(ofGetScreenWidth()/2, ofGetScreenHeight()/2);
+        ofRect(-25,-25,50,50);
+        ofPopMatrix();
+    
+    }
+
+    
+    
+    //ofSetColor(54);
      ofDrawBitmapString("Heading: ", 8, 10);
      ofDrawBitmapString(ofToString(coreLocation->getTrueHeading()), 80,10);
      ofDrawBitmapString("Heading Accuracy: ", 8, 30);
@@ -225,9 +247,7 @@ void ofApp::gotMessage(ofMessage &msg){
     
      if(result[0]=="Solved"){
          actualPointofInterest=ofToInt(result[1])+1;
-
          compass.setPointOfInterest(pointsOfInterest[actualPointofInterest]);
-         
          ofxXmlSettings settings;
          settings.loadFile(ofxiPhoneGetDocumentsDirectory()+"settings.xml");
          settings.setValue("settings:actualPointOfInterest",actualPointofInterest);
@@ -238,6 +258,151 @@ void ofApp::gotMessage(ofMessage &msg){
      }
     
 }
+
+
+
+
+
+//--------------------------------------------------------------
+
+void ofApp::setupQuests(){
+    
+    numberOfQuests=5;
+    
+    vector<string> s0;
+    string s="Café Salon";
+    s0.push_back(s);
+    s="Cafe Salon";
+    s0.push_back(s);
+    s="Cafe Saloon";
+    s0.push_back(s);
+    s="Saloon";
+    s0.push_back(s);
+    s="Kaffee Salon";
+    s0.push_back(s);
+    s="Kaffe Salon";
+    s0.push_back(s);
+    s="Kaffe Saloon";
+    s0.push_back(s);
+    s="Kaffee Saloon";
+    s0.push_back(s);
+    s="Café Saloon";
+    s0.push_back(s);
+    
+    
+    vector<string> s1;
+    s="Schatz";
+    s1.push_back(s);
+    
+    
+    vector<string> s2;
+    s="Schliessfach";
+    s2.push_back(s);
+    s="Schliesfach";
+    s2.push_back(s);
+    s="Postfach";
+    s2.push_back(s);
+    s="Safe";
+    s2.push_back(s);
+    s="Tresor";
+    s2.push_back(s);
+    s="Schliessbox";
+    s2.push_back(s);
+    s="Box";
+    s2.push_back(s);
+    
+    
+    
+    vector<string> s3;
+    s="Platte";
+    s3.push_back(s);
+    
+    vector<string> s4;
+    s="Love";
+    s4.push_back(s);
+    
+    
+    /*  for(int i=0; i<numberOfQuests; i++)
+     {
+     Quest q =*new Quest();
+     q.setup();
+     q.setId(i);
+     q.setWidth(ofGetWidth());
+     float h=100;
+     q.setHeight(h);
+     q.setScreenPosition(ofPoint(0,(h*i)+500));
+     // q.setSecret("S");
+     q.setSecretArray(s1);
+     quests.push_back(q);
+     }*/
+    
+    float h=80;
+    int myid=0;
+    int offset=610;
+    
+    Quest q =*new Quest();
+    q.setup();
+    q.setId(myid);
+    q.setWidth(ofGetWidth());
+    q.setHeight(h);
+    q.setScreenPosition(ofPoint(0,(h*myid)+offset));
+    // q.setSecret("S");
+    q.setSecretArray(s0);
+    quests.push_back(q);
+    
+    myid=1;
+    q =*new Quest();
+    q.setup();
+    q.setId(myid);
+    q.setWidth(ofGetWidth());
+    q.setHeight(h);
+    q.setScreenPosition(ofPoint(0,(h*myid)+offset));
+    // q.setSecret("S");
+    q.setSecretArray(s1);
+    quests.push_back(q);
+    
+    myid=2;
+    q =*new Quest();
+    q.setup();
+    q.setId(myid);
+    q.setWidth(ofGetWidth());
+    q.setHeight(h);
+    q.setScreenPosition(ofPoint(0,(h*myid)+offset));
+    // q.setSecret("S");
+    q.setSecretArray(s2);
+    quests.push_back(q);
+    
+    myid=3;
+    q =*new Quest();
+    q.setup();
+    q.setId(myid);
+    q.setWidth(ofGetWidth());
+    q.setHeight(h);
+    q.setScreenPosition(ofPoint(0,(h*myid)+offset));
+    // q.setSecret("S");
+    q.setSecretArray(s3);
+    quests.push_back(q);
+    
+    myid=4;
+    q =*new Quest();
+    q.setup();
+    q.setId(myid);
+    q.setWidth(ofGetWidth());
+    q.setHeight(h);
+    q.setScreenPosition(ofPoint(0,(h*myid)+offset));
+    // q.setSecret("S");
+    q.setSecretArray(s4);
+    quests.push_back(q);
+    
+    
+    
+    
+    
+}
+
+
+
+
 
 
 //--------------------------------------------------------------
@@ -265,14 +430,40 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
     
+    cout<<touch.id<<endl;
+
+    
+    float now = ofGetElapsedTimef();
+    
+    if (now-timer>intervallMin&&now-timer<intervallMax){
+        reset();
+        bIsReset=true;
+    }
+    if(touch.id==2){
+        cout<<"timer to now"<<endl;
+        cout<<"now "<<now<<" delta "<<now-timer<<endl;
+        timer=now;
+    }
+
+
+}
+
+//--------------------------------------------------------------
+void ofApp::reset(){
+    
+    cout<<"---------- Reset ------------" <<endl;
+    
     ofxXmlSettings settings;
     settings.loadFile(ofxiPhoneGetDocumentsDirectory()+"settings.xml");
     cout<<settings.getValue("settings:actualPointOfInterest", 0)<<endl;
     settings.setValue("settings:actualPointOfInterest",0);
     settings.saveFile(ofxiPhoneGetDocumentsDirectory()+"settings.xml"); //puts settings.xml file in the bin/data folder
     actualPointofInterest=0;
+    
 
+    
 }
+
 
 //--------------------------------------------------------------
 void ofApp::touchCancelled(ofTouchEventArgs & touch){
@@ -296,6 +487,8 @@ void ofApp::gotMemoryWarning(){
 
 //--------------------------------------------------------------
 void ofApp::deviceOrientationChanged(int newOrientation){
+    bIsReset=false;
 
 }
+
 

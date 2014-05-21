@@ -41,6 +41,7 @@ class ofApp : public ofxiOSApp{
     vector<ofPoint> pointsOfInterest;
     int actualPointofInterest;
     
+    void setupQuests();
     
     
     //Quests
@@ -60,6 +61,17 @@ class ofApp : public ofxiOSApp{
     
     
 private:
+    float intervallMin;
+    float intervallMax;
+    float timer;
+    
+    void reset();
+    
+    ofImage backgroundImage;
+    bool bIsReset;
+    
+    
+  
 
 };
 
